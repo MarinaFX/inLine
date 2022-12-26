@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel: ViewModel = ViewModel()
+    
     var body: some View {
         NavigationSplitView(sidebar: {
             #if os(iOS)
-            ParticipantsListView()
+            CallForHelpListView()
+                .environmentObject(self.viewModel)
             #endif
         }, detail: {
-            ParticipantsListView()
+            CallForHelpListView()
+                .environmentObject(self.viewModel)
         })
     }
 }

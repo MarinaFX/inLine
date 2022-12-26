@@ -1,5 +1,5 @@
 //
-//  ParticipantsListView.swift
+//  CallForHelpListView.swift
 //  inLine
 //
 //  Created by Marina De Pazzi on 26/12/22.
@@ -8,8 +8,9 @@
 import SwiftUI
 import DequeModule
 
-struct ParticipantsListView: View {
-    @State private var list = Deque<String>()
+struct CallForHelpListView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    
     @State private var popItem: String = ""
     @State private var viewSelection: Int = 0
     @State private var pickerOptions: [QueueStatusEnum] = [.all, .pending, .done]
@@ -26,8 +27,16 @@ struct ParticipantsListView: View {
             .pickerStyle(.segmented)
             .padding()
             
-            List(self.list, id: \.self) { student in
-                ListRowView(status: .pending, name: "Kara Zor-El", subject: "Combine", subjectArea: .development)
+            List(self.viewModel.queue, id: \.self) { cfh in
+                ListRowView(status: cfh.status, name: cfh.name, subject: cfh.subject, subjectArea: cfh.subjectArea)
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
+                        Button(role: .destructive, action: {
+                            self.viewModel.completeCallForHelp()
+                        }, label: {
+                            Image(systemName: "checkmark.circle")
+                        })
+                        .tint(.green)
+                    })
             }
             .listStyle(.insetGrouped)
             
@@ -45,18 +54,12 @@ struct ParticipantsListView: View {
         .sheet(isPresented: self.$isPresentingSheet, content: {
             AddSubjectView()
         })
-        .onAppear(perform: {
-            self.list.append("flemis")
-            self.list.append("flemis")
-            self.list.append("flemis")
-            self.list.append("flemis")
-        })
         .navigationTitle("Call for Help")
     }
 }
 
 struct ParticipantsListView_Previews: PreviewProvider {
     static var previews: some View {
-        ParticipantsListView()
+        CallForHelpListView()
     }
 }
