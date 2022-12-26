@@ -7,7 +7,15 @@
 
 import Foundation
 
-class CallForHelp: Hashable {
+class CallForHelp: Hashable, Codable {
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case subject
+        case subjectArea
+        case status
+    }
+    
     private var id: String = UUID().uuidString
     
     var name: String = ""
@@ -15,6 +23,7 @@ class CallForHelp: Hashable {
     var subjectArea: SubjectAreaEnum = .development
     var status: QueueStatusEnum = .pending
     
+    //MARK: - Hashable
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.name)
         hasher.combine(self.subject)

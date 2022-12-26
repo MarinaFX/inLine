@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum QueueStatusEnum: CustomStringConvertible {
+enum QueueStatusEnum: CustomStringConvertible, Codable {
     case all
     case done
     case pending

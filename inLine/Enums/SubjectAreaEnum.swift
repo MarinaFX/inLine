@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SubjectAreaEnum: CustomStringConvertible {
+enum SubjectAreaEnum: CustomStringConvertible, Codable {
     case design
     case development
     

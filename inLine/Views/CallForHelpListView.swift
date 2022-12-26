@@ -12,11 +12,15 @@ struct CallForHelpListView: View {
     @EnvironmentObject var viewModel: ViewModel
     
     @State private var popItem: String = ""
-    @State private var viewSelection: Int = 0
+    @State private var viewSelection: Int = 1
     @State private var pickerOptions: [QueueStatusEnum] = [.all, .pending, .done]
     
     @State private var isPresentingSheet: Bool = false
     
+    private var currentListShown: Deque<CallForHelp> {
+        self.viewSelection == 1 ? self.viewModel.queue : self.viewModel.completedQueue
+    }
+    //TODO: Fix Picker + Fix completed requests not showing on other list
     var body: some View {
         VStack {
             Picker(selection: self.$viewSelection, content: {
@@ -27,7 +31,7 @@ struct CallForHelpListView: View {
             .pickerStyle(.segmented)
             .padding()
             
-            List(self.viewModel.queue, id: \.self) { cfh in
+            List(self.currentListShown, id: \.self) { cfh in
                 ListRowView(status: cfh.status, name: cfh.name, subject: cfh.subject, subjectArea: cfh.subjectArea)
                     .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
                         Button(role: .destructive, action: {
