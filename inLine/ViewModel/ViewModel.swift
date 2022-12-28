@@ -29,10 +29,10 @@ class ViewModel: ObservableObject {
     //MARK: - Functions
     func addCallForHelp(forStudentName name: String, forSubject subject: String, forSubjectArea subjectArea: SubjectAreaEnum, status: QueueStatusEnum = .pending) {
         let callForHelp = CallForHelp()
-            .withName(name)
-            .withSubject(subject)
-            .withSubjectArea(subjectArea)
-            .withStatus(status)
+            .set(name: name)
+            .set(subject: subject)
+            .set(subjectArea: subjectArea)
+            .set(status: status)
         
         self.queue.append(callForHelp)
         self.save()
@@ -40,10 +40,10 @@ class ViewModel: ObservableObject {
     
     func addEmergencyHelp(forStudentName name: String, forSubject subject: String, forSubjectArea subjectArea: SubjectAreaEnum, status: QueueStatusEnum = .pending) {
         let callForHelp = CallForHelp()
-            .withName(name)
-            .withSubject(subject)
-            .withSubjectArea(subjectArea)
-            .withStatus(status)
+            .set(name: name)
+            .set(subject: subject)
+            .set(subjectArea: subjectArea)
+            .set(status: status)
         
         self.queue.prepend(callForHelp)
         self.save()
@@ -54,11 +54,25 @@ class ViewModel: ObservableObject {
         let callForHelp = self.queue.popFirst()
         
         if let callForHelp = callForHelp {
+            callForHelp.status = .done
             self.completedQueue.append(callForHelp)
             self.save()
             return true
         }
         
+        return false
+    }
+    
+    @discardableResult
+    func redoRequest(for callForHelp: CallForHelp) -> Bool {
+        if self.completedQueue.contains(callForHelp) {
+            self.completedQueue.removeAll(where: { $0 == callForHelp })
+            callForHelp.status = .pending
+            self.queue.append(callForHelp)
+            
+            self.save()
+            return true
+        }
         return false
     }
     
@@ -95,3 +109,5 @@ enum UDKeys: CustomStringConvertible {
         }
     }
 }
+
+

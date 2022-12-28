@@ -11,36 +11,45 @@ struct ListRowView: View {
     //eye.square.fill - Design
     //curlybraces.square.fill - Dev
     
-    @State var status: QueueStatusEnum = .pending
-    @State var name: String = "Kara Zor-El"
-    @State var subject: String = "Combine"
-    @State var subjectArea: SubjectAreaEnum = .development
+    @State private var formattedPosition: String = ""
+    @State var index: Int = 0
+    
+    @Binding var callForHelp: CallForHelp
+    
+    private var formatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .ordinal
+        return formatter
+    }
     
     var body: some View {
         HStack {
-            Image(systemName: self.subjectArea == .development ? "curlybraces.square.fill" : "eye.square.fill")
+            Image(systemName: self.callForHelp.subjectArea == .development ? "curlybraces.square.fill" : "eye.square.fill")
                 .font(.largeTitle)
-                .foregroundColor(self.status == .pending ? .orange : .green)
+                .foregroundColor(self.callForHelp.status == .pending ? .orange : .green)
             
             VStack(alignment: .leading) {
-                Text(self.name)
+                Text(self.callForHelp.name)
                     .font(.body)
                     .fontWeight(.medium)
                 
-                Text(self.subject)
+                Text(self.callForHelp.subject)
                     .font(.callout)
                     .foregroundColor(.accentColor)
             }
             
             Spacer()
             
-            Text("1st")
+            Text(self.formattedPosition)
         }
+        .onAppear(perform: {
+            self.formattedPosition = formatter.string(from: NSNumber(value: UInt(self.index) + 1)) ?? ""
+        })
     }
 }
 
 struct ListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ListRowView()
+        ListRowView(callForHelp: .constant(CallForHelp()))
     }
 }

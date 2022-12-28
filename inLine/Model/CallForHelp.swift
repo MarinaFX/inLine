@@ -31,22 +31,22 @@ class CallForHelp: Hashable, Codable {
     }
     
     //MARK: - Functions
-    func withName(_ name: String) -> CallForHelp {
+    func `set`(name: String) -> Self {
         self.name = name
         return self
     }
     
-    func withSubject(_ subject: String) -> CallForHelp {
+    func `set`(subject: String) -> Self {
         self.subject = subject
         return self
     }
     
-    func withSubjectArea(_ subjectArea: SubjectAreaEnum) -> CallForHelp {
+    func `set`(subjectArea: SubjectAreaEnum) -> Self {
         self.subjectArea = subjectArea
         return self
     }
     
-    func withStatus(_ status: QueueStatusEnum) -> CallForHelp {
+    func `set`(status: QueueStatusEnum) -> Self {
         self.status = status
         return self
     }
