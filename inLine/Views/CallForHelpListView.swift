@@ -46,7 +46,12 @@ struct CallForHelpListView: View {
                     .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
                         if queues[index].status.wrappedValue == .pending {
                             Button(role: .destructive, action: {
-                                self.viewModel.completeCallForHelp()
+                                if index == 0 {
+                                    self.viewModel.completeCallForHelp()
+                                }
+                                else {
+                                    self.viewModel.completeCallForHelp(atIndex: index)
+                                }
                             }, label: {
                                 Image(systemName: "checkmark.circle")
                             })
@@ -83,14 +88,16 @@ struct CallForHelpListView: View {
                 })
                 
                 
-                ToolbarItem(placement: .navigationBarLeading, content: {
-                    Button(action: {
-                        self.isShowingDeleteAllAlert = true
-                    }, label: {
-                        Image(systemName: "trash")
-                            .foregroundColor(.blue)
+                if !self.queues.isEmpty {
+                    ToolbarItem(placement: .navigationBarLeading, content: {
+                        Button(action: {
+                            self.isShowingDeleteAllAlert = true
+                        }, label: {
+                            Image(systemName: "trash")
+                                .foregroundColor(.blue)
+                        })
                     })
-                })
+                }
             })
         }
         .alert(isPresented: self.$isShowingDeleteAllAlert, content: {

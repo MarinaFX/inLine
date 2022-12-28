@@ -56,10 +56,24 @@ class ViewModel: ObservableObject {
         if let callForHelp = callForHelp {
             callForHelp.status = .done
             self.completedQueue.append(callForHelp)
+            
             self.save()
             return true
         }
         
+        return false
+    }
+    
+    @discardableResult
+    func completeCallForHelp(atIndex index: Int) -> Bool {
+        let callForHelp = self.queue.remove(at: index)
+        if !self.queue.contains(callForHelp) {
+            callForHelp.status = .done
+            self.completedQueue.append(callForHelp)
+            
+            self.save()
+            return true
+        }
         return false
     }
     
