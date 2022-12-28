@@ -21,15 +21,15 @@ struct EmptyQueuesView: View {
                 .font(.largeTitle)
                 .padding()
             
-            ZStack {
-                Color.white
-                    .frame(width: 80, height: 5)
-                    .padding(.leading)
-                    .padding(.bottom, 36)
-                
-                SwiftyGif(name: "monkaHmm2.gif", loopCount: 100)
-                    .frame(width: 100, height: 100)
-            }
+//            ZStack {
+//                Color.white
+//                    .frame(width: 80, height: 5)
+//                    .padding(.leading)
+//                    .padding(.bottom, 36)
+//                
+//                SwiftyGif(name: "monkaHmm2.gif", loopCount: 100)
+//                    .frame(width: 100, height: 100)
+//            }
         }
     }
 }
