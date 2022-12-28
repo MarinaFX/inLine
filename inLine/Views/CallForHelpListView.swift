@@ -30,75 +30,103 @@ struct CallForHelpListView: View {
         }, set: { _ in })
     }
     
-    //TODO: Fix Picker + Fix completed requests not showing on other list
     var body: some View {
         VStack {
-            Picker(selection: self.$viewSelection, content: {
-                ForEach(self.pickerOptions, id: \.self) { option in
-                    Text(option.description)
+            if self.queues.isEmpty {
+                VStack {
+                    Picker(selection: self.$viewSelection, content: {
+                        ForEach(self.pickerOptions, id: \.self) { option in
+                            Text(option.description)
+                        }
+                    }, label: { })
+                    .pickerStyle(.segmented)
+                    .padding()
+                    
+                    EmptyQueuesView()
+                    
+                    Spacer()
+                    
+                        .toolbar(content: {
+                            ToolbarItem(placement: .navigationBarTrailing, content: {
+                                Button(action: {
+                                    self.isPresentingSheet = true
+                                }, label: {
+                                    Image(systemName: "person.crop.circle.badge.plus")
+                                        .foregroundColor(.blue)
+                                })
+                            })
+                        })
                 }
-            }, label: { })
-            .pickerStyle(.segmented)
-            .padding()
-            
-            List(0..<self.queues.count, id: \.self) { index in
-                ListRowView(index: index, callForHelp: queues[index])
-                    .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
-                        if queues[index].status.wrappedValue == .pending {
-                            Button(role: .destructive, action: {
-                                if index == 0 {
-                                    self.viewModel.completeCallForHelp()
-                                }
-                                else {
-                                    self.viewModel.completeCallForHelp(atIndex: index)
-                                }
-                            }, label: {
-                                Image(systemName: "checkmark.circle")
-                            })
-                            .tint(.green)
-                        }
-                        
-                        if queues[index].status.wrappedValue == .all || queues[index].status.wrappedValue == .done {
-                            Button(role: .destructive, action: {
-                                self.viewModel.completedQueue.removeAll(where: { $0 == queues[index].wrappedValue })
-                            }, label: {
-                                Image(systemName: "trash")
-                            })
-                            .tint(.red)
-                            
-                            Button(role: .cancel, action: {
-                                self.viewModel.redoRequest(for: queues[index].wrappedValue)
-                            }, label: {
-                                Image(systemName: "arrow.uturn.backward")
-                            })
-                            .tint(.purple)
-                        }
-                    })
             }
-            .listStyle(.insetGrouped)
+            else {
+                Picker(selection: self.$viewSelection, content: {
+                    ForEach(self.pickerOptions, id: \.self) { option in
+                        Text(option.description)
+                    }
+                }, label: { })
+                .pickerStyle(.segmented)
+                .padding()
+                
+                List(0..<self.queues.count, id: \.self) { index in
+                    ListRowView(index: index, callForHelp: queues[index])
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
+                            if queues[index].status.wrappedValue == .pending {
+                                Button(role: .destructive, action: {
+                                    if index == 0 {
+                                        self.viewModel.completeCallForHelp()
+                                    }
+                                    else {
+                                        self.viewModel.completeCallForHelp(atIndex: index)
+                                    }
+                                }, label: {
+                                    Image(systemName: "checkmark.circle")
+                                })
+                                .tint(.green)
+                            }
+                            
+                            if queues[index].status.wrappedValue == .all || queues[index].status.wrappedValue == .done {
+                                Button(role: .destructive, action: {
+                                    self.viewModel.completedQueue.removeAll(where: { $0 == queues[index].wrappedValue })
+                                }, label: {
+                                    Image(systemName: "trash")
+                                })
+                                .tint(.red)
+                                
+                                Button(role: .cancel, action: {
+                                    self.viewModel.redoRequest(for: queues[index].wrappedValue)
+                                }, label: {
+                                    Image(systemName: "arrow.uturn.backward")
+                                })
+                                .tint(.purple)
+                            }
+                        })
+                }
+                .listStyle(.insetGrouped)
             
-            .toolbar(content: {
-                ToolbarItem(placement: .navigationBarTrailing, content: {
-                    Button(action: {
-                        self.isPresentingSheet = true
-                    }, label: {
-                        Image(systemName: "person.crop.circle.badge.plus")
-                            .foregroundColor(.blue)
-                    })
-                })
-                
-                
-                if !self.queues.isEmpty {
-                    ToolbarItem(placement: .navigationBarLeading, content: {
+            
+                .toolbar(content: {
+                    ToolbarItem(placement: .navigationBarTrailing, content: {
                         Button(action: {
-                            self.isShowingDeleteAllAlert = true
+                            self.isPresentingSheet = true
                         }, label: {
-                            Image(systemName: "trash")
+                            Image(systemName: "person.crop.circle.badge.plus")
                                 .foregroundColor(.blue)
                         })
                     })
-                }
-            })
+                    
+                    
+                    if !self.queues.isEmpty {
+                        ToolbarItem(placement: .navigationBarLeading, content: {
+                            Button(action: {
+                                self.isShowingDeleteAllAlert = true
+                            }, label: {
+                                Image(systemName: "trash")
+                                    .foregroundColor(.blue)
+                            })
+                        })
+                    }
+                })
+            }
         }
         .alert(isPresented: self.$isShowingDeleteAllAlert, content: {
             Alert(title: Text("Are you sure you want to clear all queues?"), message: Text("This action will **remove** everyone from all queues"),primaryButton: .destructive(Text("Yes, clear queues"), action: {

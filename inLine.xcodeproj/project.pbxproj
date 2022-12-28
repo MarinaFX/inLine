@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B44A55F295CC24800F7F029 /* EmptyQueuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B44A55E295CC24800F7F029 /* EmptyQueuesView.swift */; };
+		1B44A562295CC32C00F7F029 /* monkaHmm.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1B44A561295CC32C00F7F029 /* monkaHmm.gif */; };
+		1B44A565295CCC7900F7F029 /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = 1B44A564295CCC7900F7F029 /* SwiftyGif */; };
 		1B709811295A36EA00BE57AA /* AddSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B709810295A36EA00BE57AA /* AddSubjectView.swift */; };
 		1B709813295A372000BE57AA /* SubjectAreaEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B709812295A372000BE57AA /* SubjectAreaEnum.swift */; };
 		1B709817295A374A00BE57AA /* QueueStatusEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B709816295A374A00BE57AA /* QueueStatusEnum.swift */; };
@@ -14,6 +17,7 @@
 		1B70981B295A37D600BE57AA /* CallForHelpListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B70981A295A37D600BE57AA /* CallForHelpListView.swift */; };
 		1B70981F295A390800BE57AA /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B70981E295A390800BE57AA /* ViewModel.swift */; };
 		1B709821295A39F300BE57AA /* CallForHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B709820295A39F300BE57AA /* CallForHelp.swift */; };
+		1B828355295CD2F700C5F448 /* monkaHmm2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1B828354295CD2F700C5F448 /* monkaHmm2.gif */; };
 		1BBE068829411C2100EAB5E6 /* inLineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBE068729411C2100EAB5E6 /* inLineApp.swift */; };
 		1BBE068A29411C2100EAB5E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBE068929411C2100EAB5E6 /* ContentView.swift */; };
 		1BBE068C29411C2300EAB5E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BBE068B29411C2300EAB5E6 /* Assets.xcassets */; };
@@ -24,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B44A55E295CC24800F7F029 /* EmptyQueuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyQueuesView.swift; sourceTree = "<group>"; };
+		1B44A561295CC32C00F7F029 /* monkaHmm.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = monkaHmm.gif; path = ../../../../../Downloads/monkaHmm.gif; sourceTree = "<group>"; };
 		1B709810295A36EA00BE57AA /* AddSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectView.swift; sourceTree = "<group>"; };
 		1B709812295A372000BE57AA /* SubjectAreaEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectAreaEnum.swift; sourceTree = "<group>"; };
 		1B709816295A374A00BE57AA /* QueueStatusEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueStatusEnum.swift; sourceTree = "<group>"; };
@@ -31,6 +37,8 @@
 		1B70981A295A37D600BE57AA /* CallForHelpListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallForHelpListView.swift; sourceTree = "<group>"; };
 		1B70981E295A390800BE57AA /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		1B709820295A39F300BE57AA /* CallForHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallForHelp.swift; sourceTree = "<group>"; };
+		1B828353295CD10D00C5F448 /* monkaHmm.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = monkaHmm.gif; sourceTree = "<group>"; };
+		1B828354295CD2F700C5F448 /* monkaHmm2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = monkaHmm2.gif; path = ../../../../../Downloads/monkaHmm2.gif; sourceTree = "<group>"; };
 		1BBE068429411C2100EAB5E6 /* inLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = inLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BBE068729411C2100EAB5E6 /* inLineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inLineApp.swift; sourceTree = "<group>"; };
 		1BBE068929411C2100EAB5E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +53,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BBE069F2942694000EAB5E6 /* Collections in Frameworks */,
+				1B44A565295CCC7900F7F029 /* SwiftyGif in Frameworks */,
 				1BBE06A12942694000EAB5E6 /* DequeModule in Frameworks */,
 				1BBE06A32942694000EAB5E6 /* OrderedCollections in Frameworks */,
 			);
@@ -53,6 +62,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B44A560295CC31B00F7F029 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				1BBE068B29411C2300EAB5E6 /* Assets.xcassets */,
+				1B44A561295CC32C00F7F029 /* monkaHmm.gif */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		1B709814295A372800BE57AA /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +78,7 @@
 				1B709810295A36EA00BE57AA /* AddSubjectView.swift */,
 				1B709818295A376500BE57AA /* ListRowView.swift */,
 				1B70981A295A37D600BE57AA /* CallForHelpListView.swift */,
+				1B44A55E295CC24800F7F029 /* EmptyQueuesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -89,6 +108,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1B828352295CD0FE00C5F448 /* gif */ = {
+			isa = PBXGroup;
+			children = (
+				1B828353295CD10D00C5F448 /* monkaHmm.gif */,
+				1B828354295CD2F700C5F448 /* monkaHmm2.gif */,
+			);
+			path = gif;
+			sourceTree = "<group>";
+		};
 		1BBE067B29411C2100EAB5E6 = {
 			isa = PBXGroup;
 			children = (
@@ -111,9 +139,10 @@
 				1B70981D295A38FA00BE57AA /* Model */,
 				1B70981C295A38F000BE57AA /* ViewModel */,
 				1B709815295A373100BE57AA /* Enums */,
+				1B828352295CD0FE00C5F448 /* gif */,
+				1B44A560295CC31B00F7F029 /* Assets */,
 				1B709814295A372800BE57AA /* Views */,
 				1BBE068729411C2100EAB5E6 /* inLineApp.swift */,
-				1BBE068B29411C2300EAB5E6 /* Assets.xcassets */,
 				1BBE068D29411C2300EAB5E6 /* inLine.entitlements */,
 				1BBE068E29411C2300EAB5E6 /* Preview Content */,
 			);
@@ -148,6 +177,7 @@
 				1BBE069E2942694000EAB5E6 /* Collections */,
 				1BBE06A02942694000EAB5E6 /* DequeModule */,
 				1BBE06A22942694000EAB5E6 /* OrderedCollections */,
+				1B44A564295CCC7900F7F029 /* SwiftyGif */,
 			);
 			productName = inLine;
 			productReference = 1BBE068429411C2100EAB5E6 /* inLine.app */;
@@ -179,6 +209,7 @@
 			mainGroup = 1BBE067B29411C2100EAB5E6;
 			packageReferences = (
 				1BBE069D2942694000EAB5E6 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				1B44A563295CCC7900F7F029 /* XCRemoteSwiftPackageReference "SwiftyGif" */,
 			);
 			productRefGroup = 1BBE068529411C2100EAB5E6 /* Products */;
 			projectDirPath = "";
@@ -194,8 +225,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B44A562295CC32C00F7F029 /* monkaHmm.gif in Resources */,
 				1BBE069029411C2300EAB5E6 /* Preview Assets.xcassets in Resources */,
 				1BBE068C29411C2300EAB5E6 /* Assets.xcassets in Resources */,
+				1B828355295CD2F700C5F448 /* monkaHmm2.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +243,7 @@
 				1B709811295A36EA00BE57AA /* AddSubjectView.swift in Sources */,
 				1B70981B295A37D600BE57AA /* CallForHelpListView.swift in Sources */,
 				1BBE068A29411C2100EAB5E6 /* ContentView.swift in Sources */,
+				1B44A55F295CC24800F7F029 /* EmptyQueuesView.swift in Sources */,
 				1B709813295A372000BE57AA /* SubjectAreaEnum.swift in Sources */,
 				1B709821295A39F300BE57AA /* CallForHelp.swift in Sources */,
 				1BBE068829411C2100EAB5E6 /* inLineApp.swift in Sources */,
@@ -430,6 +464,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1B44A563295CCC7900F7F029 /* XCRemoteSwiftPackageReference "SwiftyGif" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kirualex/SwiftyGif.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		1BBE069D2942694000EAB5E6 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-collections.git";
@@ -441,6 +483,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1B44A564295CCC7900F7F029 /* SwiftyGif */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B44A563295CCC7900F7F029 /* XCRemoteSwiftPackageReference "SwiftyGif" */;
+			productName = SwiftyGif;
+		};
 		1BBE069E2942694000EAB5E6 /* Collections */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1BBE069D2942694000EAB5E6 /* XCRemoteSwiftPackageReference "swift-collections" */;
